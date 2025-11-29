@@ -43,3 +43,40 @@ public abstract class Penumpang {
         return "ID: " + id + ", Umur: " + umur + ", Hamil: " + hamil + ", Saldo: " + saldo;
     }
 }
+class PenumpangPrioritas extends Penumpang {
+    public PenumpangPrioritas(int id, int umur, boolean hamil) {
+        super(id, umur, hamil);
+    }
+
+    @Override
+    public boolean isPrioritas() {
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + " (Prioritas)";
+    }
+}
+
+class PenumpangBiasa extends Penumpang {
+    public PenumpangBiasa(int id, int umur, boolean hamil) {
+        super(id, umur, hamil);
+    }
+
+    @Override
+    public boolean isPrioritas() {
+        return false;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + " (Biasa)";
+    }
+}
+
+class SaldoTidakCukupException extends Exception {
+    public SaldoTidakCukupException(String message) {
+        super(message);
+    }
+}
