@@ -14,4 +14,20 @@ public class Bus {
     private ArrayList<Penumpang> penumpangBiasa = new ArrayList<>();
     private ArrayList<Penumpang> penumpangPrioritas = new ArrayList<>();
     private ArrayList<Penumpang> penumpangBerdiri = new ArrayList<>();
+    public ArrayList<Penumpang> getPenumpangBiasa() { return penumpangBiasa; }
 
+    public ArrayList<Penumpang> getPenumpangPrioritas() { return penumpangPrioritas; }
+
+    public ArrayList<Penumpang> getPenumpangBerdiri() { return penumpangBerdiri; }
+
+    public int getJumlahPenumpangBiasa() { return penumpangBiasa.size(); }
+
+    public int getJumlahPenumpangPrioritas() { return penumpangPrioritas.size(); }
+
+    public int getJumlahPenumpangBerdiri() { return penumpangBerdiri.size(); }
+
+    public int getTotalPendapatan() { return totalPendapatan; }
+
+    private int getTotalPenumpang() {
+        return getJumlahPenumpangBiasa() + getJumlahPenumpangPrioritas() + getJumlahPenumpangBerdiri();
+    }
