@@ -61,3 +61,44 @@ public class Bus {
         }
         return false;
     }
+    public boolean turunkanPenumpang(int id) {
+        if (cariDanHapusPenumpang(penumpangBiasa, id)) return true;
+        if (cariDanHapusPenumpang(penumpangPrioritas, id)) return true;
+        if (cariDanHapusPenumpang(penumpangBerdiri, id)) return true;
+        return false;
+    }
+
+    private boolean cariDanHapusPenumpang(ArrayList<Penumpang> list, int id) {
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getId() == id) {
+                list.remove(i);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Batas Kapasitas: Biasa=").append(MAX_BIASA)
+          .append(", Prioritas=").append(MAX_PRIORITAS)
+          .append(", Berdiri=").append(MAX_BERDIRI).append("\n\n");
+
+        sb.append("Penumpang Biasa (Terisi ").append(getJumlahPenumpangBiasa()).append("/").append(MAX_BIASA).append("):\n");
+        for (Penumpang p : penumpangBiasa) {
+            sb.append(p.toString()).append("\n");
+        }
+        sb.append("\nPenumpang Prioritas (Terisi ").append(getJumlahPenumpangPrioritas()).append("/").append(MAX_PRIORITAS).append("):\n");
+        for (Penumpang p : penumpangPrioritas) {
+            sb.append(p.toString()).append("\n");
+        }
+        sb.append("\nPenumpang Berdiri (Terisi ").append(getJumlahPenumpangBerdiri()).append("/").append(MAX_BERDIRI).append("):\n");
+        for (Penumpang p : penumpangBerdiri) {
+            sb.append(p.toString()).append("\n");
+        }
+        sb.append("\nJumlah Penumpang: ").append(getTotalPenumpang()).append("\n");
+        sb.append("Total Pendapatan: ").append(totalPendapatan).append("\n");
+        return sb.toString();
+    }
+}
