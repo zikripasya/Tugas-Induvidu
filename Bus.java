@@ -31,3 +31,33 @@ public class Bus {
     private int getTotalPenumpang() {
         return getJumlahPenumpangBiasa() + getJumlahPenumpangPrioritas() + getJumlahPenumpangBerdiri();
     }
+    public boolean naikkanPenumpang(Penumpang p) throws SaldoTidakCukupException {
+        if (getTotalPenumpang() >= (MAX_BIASA + MAX_PRIORITAS + MAX_BERDIRI)) {
+            return false;
+        }
+
+        p.kurangiSaldo(ONGKOSBUS);
+        totalPendapatan += ONGKOSBUS;
+
+        if (p.isPrioritas()) {
+            if (getJumlahPenumpangPrioritas() < MAX_PRIORITAS) {
+                penumpangPrioritas.add(p);
+                return true;
+            } else if (getJumlahPenumpangBiasa() < MAX_BIASA) {
+                penumpangBiasa.add(p);
+                return true;
+            } else if (getJumlahPenumpangBerdiri() < MAX_BERDIRI) {
+                penumpangBerdiri.add(p);
+                return true;
+            }
+        } else {
+            if (getJumlahPenumpangBiasa() < MAX_BIASA) {
+                penumpangBiasa.add(p);
+                return true;
+            } else if (getJumlahPenumpangBerdiri() < MAX_BERDIRI) {
+                penumpangBerdiri.add(p);
+                return true;
+            }
+        }
+        return false;
+    }
