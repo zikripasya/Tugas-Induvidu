@@ -44,3 +44,26 @@ public class Main {
                     System.out.println("Input tidak valid. Silakan coba lagi.");
                     scanner.nextLine();
                 }
+            } else if (pilihan == 2) {
+                System.out.print("Masukkan ID penumpang yang ingin diturunkan: ");
+                int idTurun = scanner.nextInt();
+                boolean turun = bus.turunkanPenumpang(idTurun);
+                if (turun) {
+                    System.out.println("Penumpang berhasil diturunkan!");
+                } else {
+                    System.out.println("Penumpang tidak ditemukan!");
+                }
+            } else if (pilihan == 3) {
+                System.out.println(bus.toString());
+            } else if (pilihan == 4) {
+                System.out.println("Terima kasih!");
+                break;
+            } else {
+                System.out.println("Pilihan tidak valid.");
+            }
+            System.out.println();
+        }
+        scanner.close();
+    }
+}
+
